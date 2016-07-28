@@ -1,2 +1,2 @@
 -r production.txt
-pre-commit
+pre-commit==0.8.2
