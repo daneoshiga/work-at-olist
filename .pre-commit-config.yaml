@@ -1,14 +1,15 @@
--   repo: git://github.com/pre-commit/pre-commit-hooks
-    sha: 3fa02652357ff0dbb42b5bc78c673b7bc105fcf3
-    hooks:
-    -   id: flake8
-    -   id: trailing-whitespace
-    -   id: debug-statements
-    -   id: check-added-large-files
-    -   id: check-docstring-first
-    -   id: check-merge-conflict
-    -   id: end-of-file-fixer
--   repo: git://github.com/Lucas-C/pre-commit-hooks
-    sha: fd1e7b50452886f04bee43b05ef2f45c4f0a403a
-    hooks:
-    -   id: forbid-tabs
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  sha: 3fa02652357ff0dbb42b5bc78c673b7bc105fcf3
+  hooks:
+    - id: flake8
+    - id: trailing-whitespace
+    - id: debug-statements
+    - id: check-added-large-files
+    - id: check-docstring-first
+    - id: check-merge-conflict
+    - id: end-of-file-fixer
+
+- repo: git://github.com/Lucas-C/pre-commit-hooks
+  sha: fd1e7b50452886f04bee43b05ef2f45c4f0a403a
+  hooks:
+  - id: forbid-tabs
