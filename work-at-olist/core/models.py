@@ -4,6 +4,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Channel(models.Model):
+    """Channels (eg. marketplaces)"""
     name = models.CharField('Name', max_length=255)
 
     def __str__(self):
@@ -11,6 +12,7 @@ class Channel(models.Model):
 
 
 class Category(MPTTModel):
+    """Categories Tree Structure of each channel"""
     name = models.CharField('Name', max_length=255)
     parent = TreeForeignKey('self', null=True, blank=True,
                             related_name='children', db_index=True)
