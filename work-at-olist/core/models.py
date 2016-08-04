@@ -20,3 +20,16 @@ class Category(MPTTModel):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def create_channel_categories(self, channel, categories):
+        channel, _ = Channel.objects.get_or_create(name=channel)
+        previous = None
+        count = 0
+        for category in categories:
+            previous, created = (Category.objects
+                                 .get_or_create(channel=channel, name=category,
+                                                parent=previous))
+            if created:
+                count += 1
+        return count
