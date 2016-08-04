@@ -29,10 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
     'core',
 ]
 
-INSTALLED_APPS += config("INSTALLED_APPS", cast=config.list)
+INSTALLED_APPS += config("LOCAL_APPS", default=[], cast=config.list)
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

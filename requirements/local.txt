@@ -1,2 +1,4 @@
 -r production.txt
 pre-commit==0.8.2
+django-extensions==1.6.7
+ipython==5.0.0
