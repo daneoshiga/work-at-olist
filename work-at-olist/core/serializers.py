@@ -13,11 +13,15 @@ class ChannelSerializer(serializers.ModelSerializer):
 
 class CategoryListSerializer(serializers.ModelSerializer):
     category = serializers.CharField(source='name')
-    children = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Category
         fields = ('category', 'level', 'children')
+
+    def get_fields(self):
+        fields = super().get_fields()
+        fields['children'] = CategoryListSerializer(many=True)
+        return fields
 
 
 class CategoryFamilySerializer(serializers.ModelSerializer):
