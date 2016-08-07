@@ -29,7 +29,10 @@ class TestAPI:
         assert response.status_code == 200
 
     def test_get_channels_content(self, client, initial_data):
-        content = [{'channel': 'testchannel'}]
+        content = [{
+            'id': str(initial_data['channel'].pk),
+            'channel': 'testchannel'
+        }]
         response = client.get('/api/1/channels/')
 
         assert b'testchannel' in response.content
