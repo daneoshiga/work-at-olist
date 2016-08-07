@@ -1,9 +1,17 @@
+import uuid
 from django.db import models
 
 from mptt.models import MPTTModel, TreeForeignKey
 
 
-class Channel(models.Model):
+class OlistBaseModel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    class Meta:
+        abstract = True
+
+
+class Channel(OlistBaseModel):
     """Channels (eg. marketplaces)"""
     name = models.CharField('Name', max_length=255, blank=False)
 
@@ -11,7 +19,7 @@ class Channel(models.Model):
         return self.name
 
 
-class Category(MPTTModel):
+class Category(OlistBaseModel, MPTTModel):
     """Categories Tree Structure of each channel"""
     name = models.CharField('Name', max_length=255, blank=False)
     parent = TreeForeignKey('self', null=True, blank=True,

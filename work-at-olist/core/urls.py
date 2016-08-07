@@ -1,10 +1,10 @@
 from django.conf.urls import url
-from rest_framework.urlpatterns import format_suffix_patterns
 
 from core import views
 
 urlpatterns = [
     url(r'^channels/$', views.ChannelList.as_view()),
+    url(r'^channel/(?P<channel>[a-z0-9-]+)/$', views.CategoryList.as_view()),
+    url(r'^category/(?P<category_id>[a-z0-9-]+)/$',
+        views.CategoryFamily.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
