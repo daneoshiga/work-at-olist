@@ -34,7 +34,7 @@ class CategoryFamily(mixins.ListModelMixin, generics.GenericAPIView):
         return self.list(request, *args, **kwargs)
 
     def get_queryset(self):
-        pk = self.kwargs.get('category_id')
+        category_id = self.kwargs.get('category_id')
         return (Category.objects
-                .get(pk=pk)
+                .get(pk=category_id)
                 .get_family())
