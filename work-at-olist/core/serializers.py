@@ -16,7 +16,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('category', 'level', 'children')
+        fields = ('id', 'category', 'children')
 
     def get_fields(self):
         fields = super().get_fields()
@@ -29,4 +29,4 @@ class CategoryFamilySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('category', 'level', 'id')
+        fields = ('id', 'category')
