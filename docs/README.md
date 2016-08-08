@@ -3,18 +3,18 @@
 This is the documentation document for the work-at-olist project, bellow is
 described each endpoint available in the API:
 
-* **/channels/**
+* **/api/1/channels/**
 
     Lists existing channels
 
-* **/channel/<channel_uuid>**
+* **/api/1/channel/<channel_uuid>**
 
     List all categories and subcategories of a channel, in a parent -> children
     structure
 
     params: Channel UUID
 
-* **/category/<category_uuid>**
+* **/api/1/category/<category_uuid>**
 
     Return a single category with their parent categories and subcategories.
     (eg. the category family)
