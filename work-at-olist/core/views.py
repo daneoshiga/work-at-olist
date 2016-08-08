@@ -26,7 +26,7 @@ class CategoryList(mixins.ListModelMixin, generics.GenericAPIView):
         channel = self.kwargs.get('channel')
         return (Category.objects
                 .filter(channel=channel)
-                .filter(level=0))
+                .get_cached_trees())
 
 
 class CategoryFamily(mixins.ListModelMixin, generics.GenericAPIView):

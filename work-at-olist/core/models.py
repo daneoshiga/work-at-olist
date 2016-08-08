@@ -43,3 +43,10 @@ class Category(OlistBaseModel, MPTTModel):
             if created:
                 count += 1
         return count
+
+    def serializable_tree(self):
+        "Generate a serializable structure from current node and children"
+        obj = {'id': str(self.pk), 'category': self.name, 'children': []}
+        for child in self.get_children():
+            obj['children'].append(child.serializable_tree())
+        return obj

@@ -14,16 +14,9 @@ class ChannelSerializer(serializers.ModelSerializer):
 
 class CategoryListSerializer(serializers.ModelSerializer):
     """Serialize the categories tree with parents and children"""
-    category = serializers.CharField(source='name')
 
-    class Meta:
-        model = Category
-        fields = ('id', 'category', 'children')
-
-    def get_fields(self):
-        fields = super().get_fields()
-        fields['children'] = CategoryListSerializer(many=True)
-        return fields
+    def to_representation(self, instance):
+        return instance.serializable_tree()
 
 
 class CategoryFamilySerializer(serializers.ModelSerializer):
