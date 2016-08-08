@@ -31,6 +31,8 @@ class Category(OlistBaseModel, MPTTModel):
 
     @classmethod
     def create_channel_categories(self, channel, categories):
+        """Create a Category tree given a channel name and category list
+        """
         channel, _ = Channel.objects.get_or_create(name=channel)
         previous = None
         count = 0

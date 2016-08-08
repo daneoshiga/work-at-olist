@@ -4,6 +4,7 @@ from core.models import Channel, Category
 
 
 class ChannelSerializer(serializers.ModelSerializer):
+    """Serialize channel data"""
     channel = serializers.CharField(source='name')
 
     class Meta:
@@ -12,6 +13,7 @@ class ChannelSerializer(serializers.ModelSerializer):
 
 
 class CategoryListSerializer(serializers.ModelSerializer):
+    """Serialize the categories tree with parents and children"""
     category = serializers.CharField(source='name')
 
     class Meta:
@@ -25,6 +27,9 @@ class CategoryListSerializer(serializers.ModelSerializer):
 
 
 class CategoryFamilySerializer(serializers.ModelSerializer):
+    """Serialize a category 'family', the category with its parents and
+    subcategories
+    """
     category = serializers.CharField(source='name')
 
     class Meta:
