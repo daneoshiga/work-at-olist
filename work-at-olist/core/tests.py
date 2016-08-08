@@ -1,9 +1,9 @@
-import pytest
 import json
 
+import pytest
 from django.core.urlresolvers import reverse
 
-from core.models import Channel, Category
+from core.models import Category, Channel
 
 
 @pytest.fixture

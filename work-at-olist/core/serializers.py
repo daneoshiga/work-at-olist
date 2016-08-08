@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import Channel, Category
+from core.models import Category, Channel
 
 
 class ChannelSerializer(serializers.ModelSerializer):
