@@ -21,6 +21,22 @@ described each endpoint available in the API:
 
     params: Category UUID
 
+## Running Tests
+
+The tests can be run using tox, in the repository root:
+
+```
+pip install -r requirements-test.txt
+tox
+```
+
+Or directly running py.test:
+
+```
+pip install -r requirements-test.txt
+cd work-at-olist
+py.test
+```
 
 ## Implementation Decisions
 
