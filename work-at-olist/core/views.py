@@ -1,9 +1,8 @@
-from rest_framework import mixins
-from rest_framework import generics
+from rest_framework import generics, mixins
 
-from core.models import Channel, Category
-from core.serializers import (ChannelSerializer, CategoryListSerializer,
-                              CategoryFamilySerializer)
+from core.models import Category, Channel
+from core.serializers import (CategoryFamilySerializer, CategoryListSerializer,
+                              ChannelSerializer)
 
 
 class ChannelList(mixins.ListModelMixin, generics.GenericAPIView):
