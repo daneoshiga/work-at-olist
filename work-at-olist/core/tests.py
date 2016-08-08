@@ -19,9 +19,10 @@ def initial_data():
 
 @pytest.mark.django_db
 class TestModel:
-    def test_create_categories_from_list(self):
+    def test_create_categories_from_list(self, initial_data):
+        channel = initial_data['channel']
         categories = ['Books', 'National Literature', 'Science Fiction']
-        created = Category.create_channel_categories(channel='testchannel',
+        created = Category.create_channel_categories(channel=channel,
                                                      categories=categories)
         assert created == len(categories)
 
@@ -45,8 +46,9 @@ class TestAPI:
         assert content == json.loads(response.content.decode())
 
     def test_get_channels_categories_is_up(self, client, initial_data):
+        channel = initial_data['channel']
         categories = ['Books', 'National Literature', 'Science Fiction']
-        Category.create_channel_categories(channel='testchannel',
+        Category.create_channel_categories(channel=channel,
                                            categories=categories)
 
         url = reverse('core:category_list',
@@ -92,7 +94,6 @@ class TestAPI:
         url = reverse('core:category_family',
                       kwargs={'category_id': category.pk})
         response = client.get(url)
-        print(response.content)
         assert b'Category 2' in response.content
         assert b'Other Tree' not in response.content
         assert content == json.loads(response.content.decode())

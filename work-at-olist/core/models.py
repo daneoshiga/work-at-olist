@@ -33,15 +33,11 @@ class Category(OlistBaseModel, MPTTModel):
     def create_channel_categories(self, channel, categories):
         """Create a Category tree given a channel name and category list
         """
-        channel, _ = Channel.objects.get_or_create(name=channel)
         previous = None
-        count = 0
-        for category in categories:
+        for count, category in enumerate(categories, 1):
             previous, created = (Category.objects
                                  .get_or_create(channel=channel, name=category,
                                                 parent=previous))
-            if created:
-                count += 1
         return count
 
     def serializable_tree(self):

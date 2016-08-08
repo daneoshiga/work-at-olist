@@ -19,9 +19,11 @@ class CategoryList(mixins.ListModelMixin, generics.GenericAPIView):
     serializer_class = CategoryListSerializer
 
     def get(self, request, *args, **kwargs):
+        """Map GET method to DRF list() method"""
         return self.list(request, *args, **kwargs)
 
     def get_queryset(self):
+        """Return tree queryset with cached nodes"""
         channel = self.kwargs.get('channel')
         return (Category.objects
                 .filter(channel=channel)

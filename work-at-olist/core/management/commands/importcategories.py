@@ -5,12 +5,11 @@ from core.models import Channel, Category
 
 
 class Command(BaseCommand):
-    # TODO: add error handling and help text usage
     help = 'Imports one channel categories from csv file'
 
     def add_arguments(self, parser):
-        parser.add_argument('channel')
-        parser.add_argument('file')
+        parser.add_argument('channel', help='Channel name')
+        parser.add_argument('file', help='CSV file containing categories path')
 
     def handle(self, *args, **options):
         channel, _ = Channel.objects.get_or_create(name=options['channel'])
@@ -19,5 +18,7 @@ class Command(BaseCommand):
             categories_reader = csv.reader(categories_file)
             next(categories_reader)
             for row in categories_reader:
-                count = Category.create_channel_categories(channel.name, row[0].split(' / '))
-                print(count)
+                count = Category.create_channel_categories(channel, row[0].split(' / '))
+                self.stdout.write('Processed {} Categories'.format(count))
+
+        self.stdout.write(self.style.SUCCESS('Categories imported!'))
